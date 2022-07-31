@@ -21,9 +21,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
     overflow: hidden;
     background-color: var(--darker);
-    font-family: 'Roboto', sans-serif;
     height: 100vh;
     color: var(--font-color);
 }
