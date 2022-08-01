@@ -1,34 +1,38 @@
-// Get the grid container
-const container = document.getElementById("container-right")
-// Get the input range element
+const container = document.getElementById("container");
 const range = document.getElementById("range")
 
-// Set the Grid Area function
-const setGridArea = (rows = 16, cols = 16) => {
-    container.style.setProperty('--grid-rows', rows);
-    container.style.setProperty('--grid-cols', cols);
+const setGridArea = (area = 16) => {
+    container.style.setProperty('--grid-rows', area);
+    container.style.setProperty('--grid-cols', area);
 
-    for (c = 0; c < (rows * cols); c++) {
+    for (c = 0; c < (area ** 2); c++) {
         let cell = document.createElement("div");
         container.appendChild(cell).className = "grid-item";
     }
 };
 
-// Reset Grid
-const reset = () => {
+function resetGrid() {
     document
         .querySelectorAll(".grid-item")
         .forEach((e) => e.parentNode.removeChild(e));
 }
 
-// Run function on load
-setGridArea(16, 16);
+function handleRange(e) {
+    resetGrid();
+    setGridArea(e.target.value);
+}
 
-// Add event lister to range input
-range.addEventListener("change", (e) => {
-    const rows = e.target.value;
-    const cols = e.target.value;
+range.onclick = (e) => handleRange(e);
 
-    reset();
-    setGridArea(rows, cols);
-})
+window.onload = () => {
+    setGridArea();
+}
+
+
+
+
+
+
+
+
+
